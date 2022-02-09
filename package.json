@@ -9,5 +9,8 @@
     "@tensorflow/tfjs": "^3.13.0",
     "d3": "^7.3.0",
     "node-watch": "^0.7.3"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
