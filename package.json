@@ -1,15 +1,14 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "subtree-sync": "subtree-sync.sh.bat"
+  },
   "devDependencies": {
     "dotenv": "^14.2.0",
     "lerna": "^4.0.0"
   },
-  "dependencies": {
-    "@tensorflow/tfjs": "^3.13.0",
-    "d3": "^7.3.0",
-    "node-watch": "^0.7.3"
-  },
+  "dependencies": {},
   "workspaces": [
     "packages/*"
   ]
