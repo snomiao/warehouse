@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "cd packages/calendar && npm run dev",
     "serve": "npx serve data -l tcp://0.0.0.0:50302",
+    "postversion": "subtree-sync",
     "subtree-sync": "subtree-sync"
   },
   "devDependencies": {
