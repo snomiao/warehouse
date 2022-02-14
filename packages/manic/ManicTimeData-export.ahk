@@ -1,9 +1,20 @@
 #SingleInstance, force
 
+dir := FileExist(dir) ? dir : A_ScriptDir "\ManicTime"
+dir := FileExist(dir) ? dir : "C:\ProgramData\ManicTime\ManicTime_4.4.9.0_Green\ManicTime"
+dir := FileExist(dir) ? dir : USERPROFILE "\ManicTime_4.4.9.0_Green\ManicTime"
+dir := FileExist(dir) ? dir : "C:\Program Files\ManicTime"
+dir := FileExist(dir) ? dir : "C:\Program Files (x86)\ManicTime"
+
+global exeFile := "ManicTime.exe"
+global path := dir "\" exeFile
+
+Menu, Tray, Icon, %path%, 1
+
 return
 
 ~^s:: onSave()
-!m:: main()
+!m:: manicExport()
 
 onSave()
 {
@@ -16,8 +27,10 @@ windowClean()
     WinClose Save As ahk_exe ManicTimeClient.exe
     WinClose Import and export ahk_exe ManicTimeClient.exe
 }
-main()
+manicExport()
 {
+    manicLaunch()
+
     windowClean()
     
     WinActivate ManicTime ahk_exe ManicTimeClient.exe
@@ -42,4 +55,16 @@ main()
     
     WinWaitActive Import and export ahk_exe ManicTimeClient.exe
     SendEvent {Esc}
+}
+
+manicLaunch(){
+	global exeFile
+	global path
+    Process, Exist, %exeFile%
+    PID := ErrorLevel
+    if (!PID) {
+        cmd := "cmd /c start " path
+        Run, %cmd%, %dir%
+        TrayTip, , ManicTime launched
+    }
 }
