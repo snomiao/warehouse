@@ -1,0 +1,49 @@
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 10mm;
+}
+.item {
+  display: flex;
+  padding: 0.1em;
+}
+
+.item h2 {
+  text-align: left;
+  font-size: inherit;
+  line-height: 1em;
+  width: 4em;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+}
+.item .qrcode {
+  width: 1em;
+  height: 1em;
+}
+.control {
+  margin: 2rem;
+}
+textarea {
+  width: 100%;
+  min-height: 5em;
+}
+@page {
+  size: 21cm 29.7cm;
+  margin: 1cm;
+}
+@media print {
+  *:not(.print) {
+    visibility: hidden;
+  }
+  .print,
+  .print * {
+    visibility: visible;
+  }
+  .print {
+    position: absolute;
+    margin: auto auto;
+    left: 0;
+    top: 0;
+  }
+}
